@@ -2,6 +2,8 @@ import React,{useState, useEffect} from 'react';
 import axios from 'axios';
 import Movie from './Movie';
 
+const API_KEY = process.env.REACT_APP_API_KEY;  
+
 const SearchMovie = () => {
 
     const [data,setData]= useState("");
@@ -11,7 +13,8 @@ const SearchMovie = () => {
 
     useEffect(() => {
         // setTimeout(() => {
-            axios.get("http://www.omdbapi.com/?apikey=967c14dc&t=" + filmTitle
+            console.log(API_KEY);
+            axios.get("http://www.omdbapi.com/?apikey=" + API_KEY + "&t=" + filmTitle
             //,
                 // {
                 //     headers: {
@@ -28,7 +31,7 @@ const SearchMovie = () => {
                     setLoaded(true);
                     setError(error);
                 })
-        // }, 4000)
+        // }, )
     })
 
     const updateTitle = (e) => {
@@ -36,8 +39,9 @@ const SearchMovie = () => {
     }
 
 
+
     if (error) {
-        return <p>Oops.. something has happened... {error.message}</p>
+        return <p>Oops.. something has happened... Did you use an API key? {error.message}</p>
     } else if (!isLoaded) {
         return <p> Please wait.... we are loading your information</p>
     } else {
