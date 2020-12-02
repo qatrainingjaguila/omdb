@@ -5,6 +5,7 @@ import SearchMovie from './Components/SearchMovie';
 import { Switch, Route, BrowserRouter as Router, Link} from 'react-router-dom';
 import All2020Movies from './Components/All2020Movies';
 import MyNav from './Components/MyNav';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
